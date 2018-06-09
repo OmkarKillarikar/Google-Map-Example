@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">GreyMap</string>
+    <string name="coordinates">Co-ordinates:</string>
+    <string name="map_fragment_title">Add Location</string>
+    <string name="list_fragment_title">Locations</string>
+    <string name="no_tags_found">No Locations Added</string>
+    <string name="pull_to_refresh">Pull to Refresh</string>
+    <string name="add_location">Add Location</string>
+    <string name="no_location_selected">No location selected</string>
+    <string name="location_added">Location added successfully</string>
+    <string name="search_location">Search Location</string>
+</resources>
