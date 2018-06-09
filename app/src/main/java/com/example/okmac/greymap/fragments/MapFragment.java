@@ -2,7 +2,6 @@ package com.example.okmac.greymap.fragments;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -29,7 +28,6 @@ import com.example.okmac.greymap.Utils.AppFileManager;
 import com.example.okmac.greymap.activities.MainActivity;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -43,14 +41,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.app.Activity.RESULT_CANCELED;
-import static android.app.Activity.RESULT_OK;
 import static android.support.v4.content.PermissionChecker.checkSelfPermission;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener, View.OnClickListener, LocationListener {
     private static final int VIBRATOR_REQUEST_CODE = 102;
-    private static final int READ_REQUEST_CODE = 103;
-    private static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 104;
+    private static final int LOCATION_REQUEST_CODE = 103;
 
 
     private PlaceAutocompleteFragment autocompleteFragment;
@@ -146,7 +141,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 if (isPermissionAccepted) {
                     vibrate();
                 }
-            case READ_REQUEST_CODE:
+            case LOCATION_REQUEST_CODE:
 
                 isPermissionAccepted = true;
                 for (int grantResult : grantResults) {
@@ -229,7 +224,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
         if (checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 || checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, READ_REQUEST_CODE);
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_REQUEST_CODE);
         } else {
             Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 

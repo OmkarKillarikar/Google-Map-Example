@@ -61,12 +61,7 @@ public class TagListFragment extends Fragment implements SwipeRefreshLayout.OnRe
         rvTags = view.findViewById(R.id.rv_geo_tags);
         rvTags.setLayoutManager(new LinearLayoutManager(getContext()));
         rvTags.setAdapter(geoTagsAdapter);
-        if (checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                || checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, READ_REQUEST_CODE);
-        } else {
-            getTags();
-        }
+        getTags();
         invalidateUi();
     }
 
